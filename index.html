@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#090a0d"><meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="OXID WHATS">
+<link rel="manifest" href="manifest.json"><link rel="apple-touch-icon" href="icon-192.png">
+<link rel="stylesheet" href="style.css"><title>OXID WHATS</title>
+</head>
+<body>
+<header class="top"><div class="brand"><div class="logo">X</div><div><b>OXID <em>WHATS</em></b><small>CONNECT • SHARE • DISCOVER</small></div></div><button class="round" aria-label="الإشعارات">♧</button></header>
+<main>
+<section id="chats" class="page active">
+<div class="heading"><h1>المحادثات</h1><button class="redbtn" onclick="newChat()">＋ محادثة</button></div>
+<input id="search" class="search" placeholder="⌕  ابحث عن محادثة..." oninput="filterChats()">
+<div class="stories"><div class="story add" onclick="toast('إضافة حالة قريباً')">＋<small>حالتي</small></div><div class="story"><span>م</span><small>مازن</small></div><div class="story"><span>س</span><small>سالم</small></div><div class="story"><span>ن</span><small>نواف</small></div></div>
+<div id="chatList">
+<div class="chat" data-name="مازن" onclick="openChat('مازن')"><div class="avatar">م</div><div class="chattext"><b>مازن</b><small>وصلت البيت؟</small></div><time>٣:٤٢ م</time><i class="unread">2</i></div>
+<div class="chat" data-name="سالم" onclick="openChat('سالم')"><div class="avatar">س</div><div class="chattext"><b>سالم</b><small>أرسل صورة</small></div><time>٢:١٨ م</time></div>
+<div class="chat" data-name="فريق OXID" onclick="openChat('فريق OXID')"><div class="avatar group">OX</div><div class="chattext"><b>فريق OXID</b><small>تم إنشاء المجموعة</small></div><time>أمس</time><i class="unread">5</i></div>
+</div>
+</section>
+<section id="ai" class="page"><div class="heading"><h1>OXID AI</h1><span class="pill">مساعد ذكي</span></div><div class="aihero"><div class="spark">✦</div><h2>ذكاء يساعدك</h2><p>اكتب طلبك لصياغة رسالة أو تلخيص نص أو ترجمته.</p></div><div id="aiLog" class="log"><div class="bubble bot">مرحباً! أنا مساعد OXID. هذه نسخة تجريبية بواجهة محلية.</div></div><form class="composer" onsubmit="askAI(event)"><input id="prompt" placeholder="اكتب لـ OXID AI..."><button class="send">➤</button></form><p class="hint">الردود هنا تجريبية. تشغيل ذكاء اصطناعي فعلي يتطلب ربط خادم آمن.</p></section>
+<section id="map" class="page"><h1>خريطة الأصدقاء</h1><div class="mapbox"><div class="mapgrid"></div><div class="pin p1">●<small>أنت</small></div><div class="pin p2">●<small>صديق</small></div><div class="maplabel">مشاركة الموقع اختيارية وبموافقة كل شخص</div></div><button class="wide" onclick="toast('ستضاف مشاركة الموقع بعد ربط الخدمة')">مشاركة موقعي</button><p class="hint">لا تظهر مواقع الآخرين إلا إذا اختاروا مشاركتها معك.</p></section>
+<section id="profile" class="page"><div class="profilehero"><div class="biglogo">X</div><h2>مستخدم OXID</h2><p>هويتك الرقمية تبدأ هنا</p></div><div class="settings"><div>◈　 الخصوصية والأمان <span>›</span></div><div>◉　 الأجهزة المرتبطة <span>›</span></div><div>✧　 المظهر الأسود <span>مفعّل</span></div><div>⚙　 الإعدادات <span>›</span></div></div></section>
+<section id="conversation" class="page"><div class="heading"><button class="back" onclick="showPage('chats')">رجوع</button><h2 id="chatTitle">محادثة</h2><span class="online">● متصل</span></div><div id="messages" class="messages"><div class="bubble bot">مرحباً بك في OXID WHATS 👋</div></div><form class="composer" onsubmit="sendMessage(event)"><input id="message" placeholder="اكتب رسالة..."><button class="send">➤</button></form></section>
+</main>
+<nav class="nav"><button class="selected" onclick="showPage('chats',this)"><b>▤</b><small>الدردشات</small></button><button onclick="showPage('ai',this)"><b>✧</b><small>OXID AI</small></button><button onclick="showPage('map',this)"><b>⌖</b><small>الموقع</small></button><button onclick="showPage('profile',this)"><b>◉</b><small>حسابي</small></button></nav>
+<div id="toast" class="toast"></div>
+<script src="app.js"></script><script>if('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js');</script>
+</body></html>

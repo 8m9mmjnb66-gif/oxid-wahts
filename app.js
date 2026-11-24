@@ -1,0 +1,8 @@
+function showPage(id,btn){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('selected'));if(btn)btn.classList.add('selected');}
+function toast(t){let x=document.getElementById('toast');x.textContent=t;x.classList.add('show');setTimeout(()=>x.classList.remove('show'),2200)}
+function filterChats(){let q=document.getElementById('search').value;document.querySelectorAll('.chat').forEach(c=>c.style.display=c.dataset.name.includes(q)?'flex':'none')}
+let current='';
+function openChat(name){current=name;document.getElementById('chatTitle').textContent=name;document.getElementById('messages').innerHTML='<div class="bubble bot">أهلاً بك في محادثة '+name+' داخل النسخة التجريبية.</div>';showPage('conversation')}
+function sendMessage(e){e.preventDefault();let i=document.getElementById('message');if(!i.value.trim())return;let d=document.createElement('div');d.className='bubble mine';d.textContent=i.value;document.getElementById('messages').appendChild(d);i.value='';document.getElementById('messages').scrollTop=99999}
+function newChat(){toast('إضافة جهات اتصال تحتاج ربط نظام الحسابات')}
+function askAI(e){e.preventDefault();let i=document.getElementById('prompt');if(!i.value.trim())return;let log=document.getElementById('aiLog');let u=document.createElement('div');u.className='bubble mine';u.textContent=i.value;log.appendChild(u);let b=document.createElement('div');b.className='bubble bot';b.textContent='وصل طلبك. لتقديم إجابة ذكية فعلية، يجب ربط OXID AI بخادم آمن ومفتاح API غير مكشوف داخل التطبيق.';log.appendChild(b);i.value=''}
